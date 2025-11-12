@@ -7,6 +7,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 //Sistema de rotas
 //Pegando o caminho da URL:
 $path = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
+use App\Helpers\Auth;
 
 if ($path === '/' || $path === ''){
     $path = '/login';
@@ -35,21 +36,26 @@ switch($path) {
         break;
     case '/logout';
         //echo "<h1>Página de Logout</h1>";
+        Auth::check();
         (new App\Controllers\LoginController())->logout();
         break;
 
         //CRUD do veiculo
     case '/veiculos';
         echo "<h1>Página de Listar Veículos</h1>";
+        Auth::check();
         break;
     case '/veiculos/criar';
         echo "<h1>Página de Criar Veículos</h1>";
+        Auth::check();
         break;
     case '/veiculos/atualizar':
         echo "<h1>Página de Atualizar Veículos</h1>";
+        Auth::check();
         break;
     case '/veiculos/deletar';
         echo "<h1>Página de Deletar Veículos</h1>";
+        Auth::check();
         break;
     default:
         http_response_code(404);
