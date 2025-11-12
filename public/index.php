@@ -34,8 +34,11 @@ switch($path) {
         }
         break;
     case '/logout';
-        echo "<h1>Página de Logout</h1>";
+        //echo "<h1>Página de Logout</h1>";
+        (new App\Controllers\LoginController())->logout();
         break;
+
+        //CRUD do veiculo
     case '/veiculos';
         echo "<h1>Página de Listar Veículos</h1>";
         break;
