@@ -14,10 +14,24 @@ if ($path === '/' || $path === ''){
 //Debug
 //echo "A rota é {$path}";
 
-//Rotas do CRUD
+//Rotas do CRUD e Login
 switch($path) {
     case '/login':
-        echo "<h1>Página de Login</h1>";
+        //echo "<h1>Página de Login</h1>";
+        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+            (new App\Controllers\LoginController())->index();
+        }
+        else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+            (new App\Controllers\LoginController())->auth();
+        }
+        break;
+    case '/register';
+        if ($_SERVER['REQUEST_METHOD'] === 'GET'){
+            (new App\Controllers\LoginController())->showRegisterPage();
+        }
+        else if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+            (new App\Controllers\LoginController())->ProcessRegister();
+        }
         break;
     case '/logout';
         echo "<h1>Página de Logout</h1>";

@@ -3,7 +3,8 @@
     "description": "Um CRUD de veículos com login em PHP.",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Config\\": "config/"
         }
     }
 }
