@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\DAO\VeiculoDAO;
 use App\Models\Veiculo;
+use App\Helpers\Utils;
 
 class VeiculoController{
     public function index(){
@@ -19,6 +20,22 @@ class VeiculoController{
     }
 
     public function store(){
+        //Validação do servidor
+        if (empty($_POST['marca']) || trim($_POST['marca']) === '') {
+            Utils::alertAndBack("Erro: O campo MARCA é obrigatório!");
+        }
+
+        if (empty($_POST['modelo']) || trim($_POST['modelo']) === '') {
+            Utils::alertAndBack("Erro: O campo MODELO é obrigatório!");
+        }
+
+        if (empty($_POST['ano']) || !is_numeric($_POST['ano'])) {
+            Utils::alertAndBack("Erro: O campo ANO deve ser um número válido!");
+        }
+
+        if (empty($_POST['km']) && $_POST['km'] !== '0') { // KM pode ser 0, então cuidado com empty
+             Utils::alertAndBack("Erro: O campo KM é obrigatório!");
+        }
         //pega os dados do post
         $marca = $_POST['marca'];
         $modelo = $_POST['modelo'];
