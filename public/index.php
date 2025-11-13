@@ -40,22 +40,34 @@ switch($path) {
         (new App\Controllers\LoginController())->logout();
         break;
 
-        //CRUD do veiculo
-    case '/veiculos';
-        echo "<h1>Página de Listar Veículos</h1>";
-        Auth::check();
-        break;
+        //CRUD rotas do veiculo
     case '/veiculos/criar';
-        echo "<h1>Página de Criar Veículos</h1>";
+        //echo "<h1>Página de Criar Veículos</h1>";
         Auth::check();
+        if($_SERVER['REQUEST_METHOD'] === 'GET'){
+            (new App\Controllers\VeiculoController())->create();
+        } else if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            (new App\Controllers\VeiculoController())->store();
+        }
+        break;
+    case '/veiculos';
+        //echo "<h1>Página de Listar Veículos</h1>";
+        Auth::check();
+        (new App\Controllers\VeiculoController())->index();
         break;
     case '/veiculos/atualizar':
-        echo "<h1>Página de Atualizar Veículos</h1>";
+        //echo "<h1>Página de Atualizar Veículos</h1>";
         Auth::check();
+        if($_SERVER['REQUEST_METHOD'] === 'GET'){
+            (new App\Controllers\VeiculoController())->edit();
+        } else if($_SERVER['REQUEST_METHOD'] === 'POST') {
+            (new App\Controllers\VeiculoController())->update();
+        }
         break;
     case '/veiculos/deletar';
-        echo "<h1>Página de Deletar Veículos</h1>";
+        //echo "<h1>Página de Deletar Veículos</h1>";
         Auth::check();
+        (new App\Controllers\VeiculoController())->delete();
         break;
     default:
         http_response_code(404);
