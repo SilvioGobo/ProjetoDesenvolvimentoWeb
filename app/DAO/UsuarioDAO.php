@@ -28,7 +28,7 @@ class UsuarioDAO{
 
             return $stmt->execute();
         } catch (PDOException $e) {
-            die('Erro ao criar usuário ' . $e->getMessage());
+            throw $e;
         }
     }
     //Buscar um usuário pelo email

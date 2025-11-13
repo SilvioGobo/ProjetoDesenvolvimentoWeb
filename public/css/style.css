@@ -1,0 +1,143 @@
+:root {
+    /* --- PALETA DE CORES --- */
+    --cor-fundo: #f0f4f8;       /* Branco Gelo (levemente azulado) */
+    --cor-container: #ffffff;   /* Branco Puro para os cartões */
+    --cor-texto: #2c3e50;       /* Azul Escuro (quase preto) para leitura */
+    --cor-azul-principal: #2980b9; /* Azul bonito para títulos/links */
+    --cor-amarelo-claro: #fff9c4;  /* Amarelo claro para destaques/fundo de cabeçalho */
+    
+    /* --- BOTÕES --- */
+    --btn-verde: #27ae60;
+    --btn-vermelho: #c0392b;
+    --btn-azul: #2980b9;
+    --btn-cinza: #95a5a6;
+}
+
+/* --- GERAL --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Centraliza o conteúdo na tela e cria um "cartão" */
+.container, body > form, body > table {
+    background-color: var(--cor-container);
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--cor-amarelo-claro); /* Detalhe em amarelo */
+}
+
+/* --- TIPOGRAFIA --- */
+h1 {
+    color: var(--cor-azul-principal);
+    border-bottom: 2px solid var(--cor-amarelo-claro);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+a {
+    color: var(--cor-azul-principal);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- FORMULÁRIOS --- */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fafafa;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--cor-azul-principal);
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(41, 128, 185, 0.2);
+}
+
+/* --- TABELAS (Lista de Veículos) --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: var(--cor-azul-principal);
+    color: white;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: var(--cor-amarelo-claro); /* Destaque amarelo ao passar o mouse */
+}
+
+/* --- BOTÕES --- */
+button, .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    transition: opacity 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+button:hover, .btn:hover {
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+/* Cores específicas dos botões */
+button[type="submit"] { background-color: var(--btn-verde); } /* Salvar/Entrar */
+
+/* Classes auxiliares para links que parecem botões */
+.btn-novo { background-color: var(--btn-azul); margin-bottom: 15px; }
+.btn-editar { color: var(--btn-azul); }
+.btn-excluir { color: var(--btn-vermelho); }
+
+/* Header da sessão (onde aparece o nome do usuário) */
+header {
+    background-color: var(--cor-amarelo-claro);
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid #eebd58;
+    color: #555;
+}
