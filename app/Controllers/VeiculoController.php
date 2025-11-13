@@ -33,8 +33,8 @@ class VeiculoController{
             Utils::alertAndBack("Erro: O campo ANO deve ser um número válido!");
         }
 
-        if (empty($_POST['km']) && $_POST['km'] !== '0') { // KM pode ser 0, então cuidado com empty
-             Utils::alertAndBack("Erro: O campo KM é obrigatório!");
+        if ($_POST['km'] === '' || !is_numeric($_POST['km'])) {
+             Utils::alertAndBack("Erro: O KM deve ser um número válido!");
         }
         //pega os dados do post
         $marca = $_POST['marca'];
@@ -97,6 +97,28 @@ class VeiculoController{
     }
 
     public function update(){
+        //Validacoes
+        
+        // Verifica Marca
+        if (empty($_POST['marca']) || trim($_POST['marca']) === '') {
+            Utils::alertAndBack("Erro: A MARCA é obrigatória!");
+        }
+
+        // Verifica Modelo
+        if (empty($_POST['modelo']) || trim($_POST['modelo']) === '') {
+            Utils::alertAndBack("Erro: O MODELO é obrigatório!");
+        }
+
+        // Verifica Ano (Aqui que barramos o texto no lugar de número)
+        if (empty($_POST['ano']) || !is_numeric($_POST['ano'])) {
+            Utils::alertAndBack("Erro: O ANO deve ser um número válido!");
+        }
+
+        // Verifica KM (Aqui também barramos texto)
+        // Aceitamos '0', mas não vazio ou texto
+        if ($_POST['km'] === '' || !is_numeric($_POST['km'])) {
+             Utils::alertAndBack("Erro: O KM deve ser um número válido!");
+        }
         //Pega os dados do POST
         $id = $_POST['id'];
         $marca = $_POST['marca'];
